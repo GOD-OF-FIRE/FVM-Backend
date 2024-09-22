@@ -4,11 +4,12 @@ const mongoose = require("mongoose");
 const cors = require("cors"); // Import the cors package
 const authRoutes = require("./routes/auth");
 const loginRoutes = require("./routes/login");
-const pendingVotersRoutes = require("./routes/pendingVoters"); 
-const approvedVotersRoutes = require("./routes/approvedVoters"); 
+const pendingVotersRoutes = require("./routes/pendingVoters");
+const approvedVotersRoutes = require("./routes/approvedVoters");
 const voterApprovalRoutes = require("./routes/voterApproval");
 const createCandidateRoutes = require("./routes/candidates");
 const candidateRoutes = require("./routes/getCandidate");
+const votingRoutes = require("./routes/Vote");
 require("dotenv").config(); // Load environment variables
 
 const app = express();
@@ -35,6 +36,7 @@ app.use("/api/admin", approvedVotersRoutes);
 app.use("/api/admin", voterApprovalRoutes);
 app.use("/api/admin", createCandidateRoutes);
 app.use("/api/admin", candidateRoutes);
+app.use("/api/voter", votingRoutes);
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
