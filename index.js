@@ -10,6 +10,8 @@ const voterApprovalRoutes = require("./routes/voterApproval");
 const createCandidateRoutes = require("./routes/candidates");
 const candidateRoutes = require("./routes/getCandidate");
 const votingRoutes = require("./routes/Vote");
+const votingStatusRoutes = require("./routes/votingStatus");
+const getvotingStatusRoutes = require("./routes/getVotingStatus");
 require("dotenv").config(); // Load environment variables
 
 const app = express();
@@ -37,6 +39,8 @@ app.use("/api/admin", voterApprovalRoutes);
 app.use("/api/admin", createCandidateRoutes);
 app.use("/api/admin", candidateRoutes);
 app.use("/api/voter", votingRoutes);
+app.use("/api/admin", votingStatusRoutes);
+app.use("/api/voter", getvotingStatusRoutes);
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
